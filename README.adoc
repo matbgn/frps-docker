@@ -1,0 +1,69 @@
+= frps-docker
+ifdef::env-github[]
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:
+endif::[]
+
+== USAGE
+[source]
+--
+docker run -d \
+  --network host \
+  --name frps \
+  --restart=always \
+  -v /etc/frp:/conf \
+  frps:32.1
+--
+
+WARNING: You need to specify network as host to enable port forwarding
+
+== EXAMPLE
+
+.# sudo nano /etc/frp/frps.ini
+[source]
+--
+[common]
+bind_port = 7000
+vhost_http_port = 8080
+subdomain_host = frp.example.com
+
+token = your_token_same_as_frpc
+max_pool_count = 5
+login_fail_exit = false
+
+dashboard_addr = 0.0.0.0
+dashboard_port = 7500
+dashboard_user = admin
+dashboard_pwd = admin
+
+log_file = ./frps.log
+log_level = info
+log_max_days = 3
+
+[web01]
+type = http
+--
+
+
+.# sudo nano /etc/frp/frpc.ini
+[source]
+--
+[common]
+server_addr = server_ip_address
+server_port = 7000
+token = your_token_same_as_frps
+
+[ssh]
+type = tcp
+local_ip = 127.0.0.1
+local_port = 22
+remote_port = 2222
+
+[web01]
+type = http
+local_port = 81
+subdomain = awesome
+--
