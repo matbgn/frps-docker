@@ -1,6 +1,6 @@
 FROM alpine
 
-RUN apk add --update tzdata
+RUN apk add --update tzdata openssl
 ENV TZ=Europe/Zurich
 
 ENV FRP_VERSION 0.32.1
