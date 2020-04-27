@@ -1,4 +1,4 @@
-= frps-docker
+= Fast Reverse Proxy Server Part
 ifdef::env-github[]
 :tip-caption: :bulb:
 :note-caption: :information_source:
@@ -7,7 +7,21 @@ ifdef::env-github[]
 :warning-caption: :warning:
 endif::[]
 
-== USAGE
+== Usage
+
+.1° Change environment variable in Dockerfile to correct number
+[source]
+--
+ENV FRP_VERSION 0.33.0
+--
+
+.2° Build the Dockerfile by changing ${FRP_VERSION} with proper number e.g. 0.33.0
+[source]
+--
+docker build --tag frps:${FRP_VERSION} .
+--
+
+.3° Run the new instance by changing ${FRP_VERSION} with proper number e.g. 0.33.0
 [source]
 --
 docker run -d \
@@ -15,12 +29,12 @@ docker run -d \
   --name frps \
   --restart=always \
   -v /etc/frp:/conf \
-  frps:32.1
+  frps:${FRP_VERSION}
 --
 
 WARNING: You need to specify network as host to enable admin dashboard port opening
 
-== EXAMPLE
+== Configuration example
 
 .# sudo nano /etc/frp/frps.ini
 [source]
@@ -45,25 +59,7 @@ log_max_days = 3
 
 [web01]
 type = http
---
 
-
-.# sudo nano /etc/frp/frpc.ini
-[source]
---
-[common]
-server_addr = server_ip_address
-server_port = 7000
-token = your_token_same_as_frps
-
-[ssh]
-type = tcp
-local_ip = 127.0.0.1
-local_port = 22
-remote_port = 2222
-
-[web01]
+[web02]
 type = http
-local_port = 81
-subdomain = awesome
 --
