@@ -41,30 +41,17 @@ WARNING: You need to specify network as host to enable admin dashboard port open
 --
 [common]
 bind_port = 7000
-vhost_http_port = 8080
-subdomain_host = frp.example.com
-
+vhost_http_port = 80
 token = your_token_same_as_frpc
-max_pool_count = 5
-login_fail_exit = false
 
-dashboard_addr = 0.0.0.0
+max_pool_count = 5
+
 dashboard_port = 7500
 dashboard_user = admin
 dashboard_pwd = admin
-
-log_file = ./frps.log
-log_level = info
-log_max_days = 3
-
-[web01]
-type = http
-
-[web02]
-type = http
 --
 
-WARNING: You have to open your firewall to allow dashboard + client connection
+WARNING: You have to open your firewall to allow dashboard + client connection + tcp if so
 
 [source]
 --
