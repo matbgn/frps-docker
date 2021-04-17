@@ -64,9 +64,10 @@ type = http
 type = http
 --
 
-WARNING: You need also to open your firewall to allow dashboard
+WARNING: You have to open your firewall to allow dashboard + client connection
 
 [source]
 --
 ufw allow 7500
+ufw allow 7000
 --
