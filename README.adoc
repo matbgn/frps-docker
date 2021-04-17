@@ -63,3 +63,10 @@ type = http
 [web02]
 type = http
 --
+
+WARNING: You need also to open your firewall to allow dashboard
+
+[source]
+--
+ufw allow 7500
+--
