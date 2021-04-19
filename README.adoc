@@ -50,6 +50,7 @@ vhost_http_port = 80
 vhost_https_port = 443
 token = your_token_same_as_frpc
 
+allow_ports = 7000
 max_pool_count = 5
 
 dashboard_port = 7500
