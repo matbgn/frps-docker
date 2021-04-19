@@ -42,6 +42,7 @@ WARNING: You need to specify network as host to enable admin dashboard port open
 [common]
 bind_port = 7000
 vhost_http_port = 80
+vhost_https_port = 443
 token = your_token_same_as_frpc
 
 max_pool_count = 5
@@ -57,4 +58,7 @@ WARNING: You have to open your firewall to allow dashboard + client connection +
 --
 ufw allow 7500
 ufw allow 7000
+ufw allow 443
 --
+
+NOTE: In order to use https rerouting on local server you have to open 443 port on exposed server
