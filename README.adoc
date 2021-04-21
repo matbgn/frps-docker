@@ -58,13 +58,14 @@ dashboard_user = admin
 dashboard_pwd = admin
 --
 
-WARNING: You have to open your firewall to allow dashboard + client connection + tcp if so
+WARNING: You have to open your firewall to allow dashboard + bind_port for client connection
 
 [source]
 --
 ufw allow 7500
 ufw allow 7000
 ufw allow 443
+ufw allow 80
 --
 
 NOTE: In order to use https rerouting on local server you have to open 443 port on exposed server
